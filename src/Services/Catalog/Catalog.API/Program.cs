@@ -2,7 +2,11 @@ using System.Net.Sockets;
 using Catalog.Persistence.Database;
 using Catalog.Service.EventHandlers;
 using Catalog.Services.Queries;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging.Configuration;
 using Serilog;
 using Serilog.Sinks.Syslog;
@@ -15,6 +19,11 @@ var papertrailPort = builder.Configuration.GetValue<int>("Papertrail:port");
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Syslog(papertrailHost, papertrailPort, ProtocolType.Udp)
     .CreateLogger();
+
+//Realiza una prueba para comprobar la salud 
+builder.Services.AddHealthChecks()
+    .AddCheck("self", () => HealthCheckResult.Healthy())
+    .AddDbContextCheck<ApplicationDbContext>();
 
 //Añadir Serilog como el proveedor de logging
 builder.Host.UseSerilog();
@@ -48,19 +57,17 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-//En caso de exception manda error y nos permite tener un mayor control
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
+app.UseAuthorization();
 
-    app.UseAuthorization();
+app.MapHealthChecks("/hc", new HealthCheckOptions()
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.MapControllers();
 
