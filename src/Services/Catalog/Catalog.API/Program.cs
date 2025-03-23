@@ -1,4 +1,5 @@
 using Catalog.Persistence.Database;
+using Catalog.Services.Queries;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,11 +11,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+//SQL Configuration
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), 
         x => x.MigrationsHistoryTable("_EFMigrationHistory", "Catalog"));
 });
+
+//Inyeccion de dependencias
+builder.Services.AddTransient<IProductQueryService, ProductQueryService>();
+builder.Services.AddTransient<IProductInStockQueryService, ProductInStockQueryService>();
 
 var app = builder.Build();
 
