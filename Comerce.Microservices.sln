@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Service.EventHandle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.Common", "src\Services\Catalog\Catalog.Common\Catalog.Common.csproj", "{14DB640F-416F-4F3B-A403-7699FD3AF8A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logging", "src\Common.Logging\Common.Logging.csproj", "{E0EAD332-64FA-45E4-BD24-F156A3DCEC1F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{14DB640F-416F-4F3B-A403-7699FD3AF8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DB640F-416F-4F3B-A403-7699FD3AF8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14DB640F-416F-4F3B-A403-7699FD3AF8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0EAD332-64FA-45E4-BD24-F156A3DCEC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0EAD332-64FA-45E4-BD24-F156A3DCEC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0EAD332-64FA-45E4-BD24-F156A3DCEC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0EAD332-64FA-45E4-BD24-F156A3DCEC1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +124,7 @@ Global
 		{B7E291FB-50E5-4C3D-87B6-315162D33294} = {64B5F830-C450-42E6-A1F3-9A77F16FD830}
 		{D3C34DC9-0CAD-4285-AACD-8FCFEDA26E5C} = {64B5F830-C450-42E6-A1F3-9A77F16FD830}
 		{14DB640F-416F-4F3B-A403-7699FD3AF8A4} = {80B6DE3A-6B7D-431B-B2A2-4190EDE292B0}
+		{E0EAD332-64FA-45E4-BD24-F156A3DCEC1F} = {A329F0FB-31DD-499B-B8F8-2AB6A752559F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C708994-D820-4B22-9B65-81DB67765FB8}
