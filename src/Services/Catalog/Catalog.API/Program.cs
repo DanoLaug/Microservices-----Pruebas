@@ -1,4 +1,5 @@
 using Catalog.Persistence.Database;
+using Catalog.Service.EventHandlers;
 using Catalog.Services.Queries;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Uso de MediatR
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly, typeof(ProductCreateEventHandler).Assembly);
+});
 
 //SQL Configuration
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

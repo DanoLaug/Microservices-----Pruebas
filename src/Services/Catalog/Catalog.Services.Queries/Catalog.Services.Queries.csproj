@@ -11,6 +11,7 @@
     <ProjectReference Include="..\..\Common\Service.Common.Mapping\Service.Common.Mapping.csproj" />
     <ProjectReference Include="..\..\Common\Service.Common.Paging\Service.Common.Paging.csproj" />
     <ProjectReference Include="..\Catalog.Persistence.Database\Catalog.Persistence.Database.csproj" />
+    <ProjectReference Include="..\Catalog.Service.EventHandlers\Catalog.Service.EventHandlers.csproj" />
   </ItemGroup>
 
 </Project>
